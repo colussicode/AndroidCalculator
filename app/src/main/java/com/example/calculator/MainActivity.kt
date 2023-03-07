@@ -10,7 +10,6 @@ enum class Operator {
     SUB,
     MUL,
     DIV,
-    MODULE,
     NONE
 }
 
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             Operator.SUB -> firstBlock - secondBlock
             Operator.DIV -> firstBlock / secondBlock
             Operator.MUL -> firstBlock * secondBlock
-            Operator.MODULE -> firstBlock % secondBlock
             else -> 0.0
         }
 
@@ -77,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             binding.buttonMinus,
             binding.buttonX,
             binding.buttonDiv,
-            binding.buttonModule
         )
 
         for(i in operatorButtons) {
@@ -89,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         operator = when (btn.text) {
             "X" -> Operator.MUL
             "/" -> Operator.DIV
-            "%" -> Operator.MODULE
             "+" -> Operator.ADD
             "-" -> Operator.SUB
             else -> Operator.NONE
