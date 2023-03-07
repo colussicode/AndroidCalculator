@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var operationsString = StringBuilder()
     private var operator: Operator = Operator.NONE
     private var isOperatorClicked = false
-    private var firstBlock: Int = 0
+    private var firstBlock: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,15 +35,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun buttonEqualsClick() {
-        val secondBlock = operationsString.toString().toInt()
+        val secondBlock =  operationsString.toString().toDouble()
 
-        val result: Int = when(operator) {
+        val result: Double = when(operator) {
             Operator.ADD -> firstBlock + secondBlock
             Operator.SUB -> firstBlock - secondBlock
             Operator.DIV -> firstBlock / secondBlock
             Operator.MUL -> firstBlock * secondBlock
             Operator.MODULE -> firstBlock % secondBlock
-            else -> 0
+            else -> 0.0
         }
 
         operationsString.clear()
@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             binding.buttonSeven,
             binding.buttonEight,
             binding.buttonNine,
+            binding.buttonDot
         )
 
         for(i in numberButtons) {
@@ -75,7 +76,8 @@ class MainActivity : AppCompatActivity() {
             binding.buttonPlus,
             binding.buttonMinus,
             binding.buttonX,
-            binding.buttonDiv
+            binding.buttonDiv,
+            binding.buttonModule
         )
 
         for(i in operatorButtons) {
@@ -98,7 +100,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun numberButtonClick(btn: Button) {
         if(isOperatorClicked) {
-            firstBlock = operationsString.toString().toInt()
+            firstBlock = operationsString.toString().toDouble()
+
             operationsString.clear()
             isOperatorClicked = false
         }
